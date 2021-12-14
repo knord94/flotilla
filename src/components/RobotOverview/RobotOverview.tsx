@@ -37,7 +37,7 @@ interface RobotOverviewProps {
 const RobotOverview: React.FC<RobotOverviewProps> = ({
   robots,
 }: RobotOverviewProps) => {
-  var robotComponnets = robots.map(function (robot) {
+  var rows = robots.map(function (robot) {
     return <RobotStatus robot={robot} />;
   });
   return (
@@ -47,7 +47,7 @@ const RobotOverview: React.FC<RobotOverviewProps> = ({
       </Table.Caption>
       <RobotOverviewHeader />
       <Table.Body className={styles.tableBodyWrapper}>
-        {robotComponnets}
+        {rows}
       </Table.Body>
     </Table>
   );
