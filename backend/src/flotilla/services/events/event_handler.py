@@ -66,7 +66,11 @@ class EventHandler:
                         self.initialize_mission_report(
                             event=event, response_isar_json=response_isar.json()
                         )
+<<<<<<< HEAD
                     except (HTTPException, Exception):
+=======
+                    except Exception:
+>>>>>>> wip Implement EventHandler class
                         self.set_event_status(
                             event_id=event.id, new_status=EventStatus.failed
                         )
