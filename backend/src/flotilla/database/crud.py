@@ -118,7 +118,11 @@ def remove_event(db: Session, event_id: int) -> None:
 
 
 def update_event_status(db: Session, event_id: int, new_status: EventStatus) -> None:
-    event: EventDBModel = read_event_by_id(db=db, event_id=event_id)
-    event.status = new_status
-    db.commit()
+    try:
+        event: EventDBModel = read_event_by_id(db=db, event_id=event_id)
+        event.status = new_status
+        db.commit()
+    except HTTPException as e:
+        raise HTTPException from e
+
     return

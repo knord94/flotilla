@@ -1,5 +1,7 @@
 import datetime
 
+from sqlalchemy import Column, DateTime
+
 from flotilla.database.models import (
     CapabilityDBModel,
     EventDBModel,
@@ -95,7 +97,7 @@ def populate_mock_db(session, connection, base) -> None:
 
     event_1 = EventDBModel(
         robot_id=robot_1.id,
-        echo_mission_id=287,
+        echo_mission_id=1,
         report_id=report_1.id,
         estimated_duration=datetime.timedelta(hours=1),
     )

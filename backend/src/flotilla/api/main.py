@@ -13,7 +13,6 @@ from flotilla.api.missions_api import router as missions_router
 from flotilla.api.reports_api import router as reports_router
 from flotilla.api.robots_api import router as robots_router
 from flotilla.config.log_config import LogConfig
-from flotilla.services.events.event_handler import start_event_handler
 from flotilla.settings import settings
 
 app = FastAPI(
