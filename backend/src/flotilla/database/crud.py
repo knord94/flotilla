@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from flotilla.database.models import (
     EventDBModel,
+    EventStatus,
     ReportDBModel,
     ReportStatus,
     RobotDBModel,
@@ -64,6 +65,13 @@ def read_event_by_id(db: Session, event_id: int) -> EventDBModel:
     return event
 
 
+def read_event_by_status(db: Session, event_status: EventStatus) -> EventDBModel:
+    event: Optional[EventDBModel] = (
+        db.query(EventDBModel).filter(EventDBModel.status == event_status).all()
+    )
+    return event
+
+
 def create_report(
     db: Session,
     robot_id: int,
@@ -105,5 +113,12 @@ def create_event(
 def remove_event(db: Session, event_id: int) -> None:
     event: EventDBModel = read_event_by_id(db, event_id)
     db.delete(event)
+    db.commit()
+    return
+
+
+def update_event_status(db: Session, event_id: int, new_status: EventStatus) -> None:
+    event: EventDBModel = read_event_by_id(db=db, event_id=event_id)
+    event.status = new_status
     db.commit()
     return
