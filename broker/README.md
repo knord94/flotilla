@@ -31,7 +31,7 @@ encoded_key=$(echo $key|base64)
 From the flotilla root directory, run the following command:
 
 ```
-docker compose up broker --build
+docker-compose up --build broker
 ```
 
 ## Authentication
